@@ -13,14 +13,15 @@
     "@base-org/account": "^2.5.7",
     "@tanstack/react-query": "^5.83.0",
     "lucide-react": "^0.468.0",
-    "ox": "^0.9.6",
+    "ox": "^0.9.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "viem": "^2.55.7",
-    "wagmi": "^2.19.5"
+    "viem": "^2.45.0",
+    "wagmi": "^2.15.6"
   },
   "overrides": {
-    "@base-org/account": "^2.5.7"
+    "@base-org/account": "^2.5.7",
+    "viem": "^2.45.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
