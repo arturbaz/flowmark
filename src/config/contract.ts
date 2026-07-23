@@ -1,8 +1,9 @@
 import type { Address } from 'viem'
 
+const deployedAddress = '0x3C512e9c32B4db9A994D558B61Cde3aC379C4c0E'
 const configuredAddress = import.meta.env.VITE_FLOWMARK_CONTRACT_ADDRESS
 const zeroContractAddress = '0x0000000000000000000000000000000000000000'
-const activeAddress = configuredAddress || zeroContractAddress
+const activeAddress = configuredAddress || deployedAddress
 
 export const isContractConfigured =
   /^0x[a-fA-F0-9]{40}$/.test(activeAddress) &&
@@ -35,20 +36,26 @@ export const flowMarkAbi = [
     name: 'statsOf',
     inputs: [{ name: 'user', type: 'address' }],
     outputs: [
-      { name: 'totalSessions', type: 'uint64' },
-      { name: 'totalMinutes', type: 'uint64' },
-      { name: 'lastMarkedAt', type: 'uint64' },
-      { name: 'checkInCount', type: 'uint64' },
-      { name: 'checkInStreak', type: 'uint64' },
-      { name: 'lastCheckInDay', type: 'uint64' },
-      { name: 'lastMinutes', type: 'uint16' },
-      { name: 'lastMode', type: 'uint8' },
-      { name: 'buildSessions', type: 'uint64' },
-      { name: 'studySessions', type: 'uint64' },
-      { name: 'readSessions', type: 'uint64' },
-      { name: 'planSessions', type: 'uint64' },
-      { name: 'practiceSessions', type: 'uint64' },
-      { name: 'resetSessions', type: 'uint64' },
+      {
+        name: 'stats',
+        type: 'tuple',
+        components: [
+          { name: 'totalSessions', type: 'uint64' },
+          { name: 'totalMinutes', type: 'uint64' },
+          { name: 'lastMarkedAt', type: 'uint64' },
+          { name: 'checkInCount', type: 'uint64' },
+          { name: 'checkInStreak', type: 'uint64' },
+          { name: 'lastCheckInDay', type: 'uint64' },
+          { name: 'lastMinutes', type: 'uint16' },
+          { name: 'lastMode', type: 'uint8' },
+          { name: 'buildSessions', type: 'uint64' },
+          { name: 'studySessions', type: 'uint64' },
+          { name: 'readSessions', type: 'uint64' },
+          { name: 'planSessions', type: 'uint64' },
+          { name: 'practiceSessions', type: 'uint64' },
+          { name: 'resetSessions', type: 'uint64' },
+        ],
+      },
     ],
     stateMutability: 'view',
   },
